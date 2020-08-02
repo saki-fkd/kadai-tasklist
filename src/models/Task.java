@@ -1,6 +1,5 @@
 package models;
-
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,13 +10,17 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+
 @Entity
 @NamedQueries({
     @NamedQuery(
             name = "getAllTasks",
             query = "SELECT m FROM Task AS m ORDER BY m.id DESC"
-            )
-
+            ),
+    @NamedQuery(
+            name = "getTasksCount",
+            query ="SELECT COUNT(m) FROM Task AS m"
+         )
 })
 @Table(name = "tasks")
 public class Task {
@@ -39,8 +42,9 @@ public class Task {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setID(Integer id) {
         this.id = id;
+
     }
 
     public String getContent() {
@@ -66,7 +70,6 @@ public class Task {
     public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
     }
+
 }
-
-
 

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.Task;
 import utils.DBUtil;
-
+import validators.TaskValidator;
 /**
  * Servlet implementation class CreateServlet
  */
@@ -41,6 +41,7 @@ public class CreateServlet extends HttpServlet {
             Task m = new Task();
 
 
+
             String content = request.getParameter("content");
             m.setContent(content);
 
@@ -56,8 +57,7 @@ public class CreateServlet extends HttpServlet {
 
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("task"
-                        + "", m);
+                request.setAttribute("task", m);
                 request.setAttribute("errors", errors);
 
 
